@@ -1,0 +1,23 @@
+int max_sum_path(struct Node* root,int &res){
+    if(root==NULL){
+        return 0;
+    }
+    int l=max_sum_path(root->left,res);
+    int r=max_sum_path(root->right,res);
+    int temp=max(max(l,r)+root->data,root->data);
+    int ans=max(temp,l+r+root->data);
+    res=max(res,ans);
+    return temp;
+}
+    int findMaxSum(Node* root)
+    {
+        if(root==NULL){
+            return -1;
+        }
+        else{
+            int res=INT_MIN;
+            max_sum_path(root,res);
+            return res;
+        }
+    }
+};
